@@ -1,0 +1,141 @@
+/* Screen Visibility Control for Solo Leveling System */
+
+/* Hide all screens by default */
+.welcome-screen,
+.player-screen,
+.decline-screen,
+.final-decline-screen,
+.dungeon-screen {
+    display: none;
+}
+
+/* Only show active screens */
+.welcome-screen.active {
+    display: flex;
+}
+
+.player-screen.active {
+    display: flex;
+}
+
+.decline-screen.active {
+    display: flex;
+}
+
+.final-decline-screen.active {
+    display: flex;
+}
+
+.dungeon-screen.active {
+    display: flex;
+}
+
+/* Hide back buttons by default */
+.back-btn {
+    display: none;
+}
+
+/* Only show back buttons on their respective screens */
+.player-screen.active #player-back-btn {
+    display: block;
+}
+
+.final-decline-screen.active #final-decline-back-btn {
+    display: block;
+}
+
+.dungeon-screen.active #dungeon-back-btn {
+    display: block;
+}
+
+/* Fix for dungeon screen elements showing on other screens */
+.dungeon-header,
+.dungeon-content,
+.dungeon-progress,
+.dungeon-status,
+.dungeon-actions,
+.dungeon-log {
+    display: none;
+}
+
+.dungeon-screen.active .dungeon-header,
+.dungeon-screen.active .dungeon-content,
+.dungeon-screen.active .dungeon-progress,
+.dungeon-screen.active .dungeon-status,
+.dungeon-screen.active .dungeon-actions,
+.dungeon-screen.active .dungeon-log {
+    display: block;
+}
+
+/* Fix for final warning message showing on other screens */
+.final-decline-message {
+    display: none;
+}
+
+.final-decline-screen.active .final-decline-message {
+    display: block;
+}
+
+/* Fix for decline message showing on other screens */
+.decline-message {
+    display: none;
+}
+
+.decline-screen.active .decline-message {
+    display: block;
+}
+
+/* Ensure proper z-index for active screens */
+.welcome-screen.active,
+.player-screen.active,
+.decline-screen.active,
+.final-decline-screen.active,
+.dungeon-screen.active {
+    z-index: 10;
+    position: relative;
+}
+
+/* Fix for navigation tabs */
+.navigation {
+    display: none;
+}
+
+.player-screen.active .navigation {
+    display: flex;
+}
+
+/* Fix for content sections */
+.content-sections {
+    display: none;
+}
+
+.player-screen.active .content-sections {
+    display: block;
+}
+
+/* Fix for popup notifications */
+.popup-notification {
+    display: none;
+}
+
+.popup-notification[style*="display: block"] {
+    display: block !important;
+}
+
+/* Fix for modal visibility */
+.modal {
+    display: none;
+}
+
+.modal.active {
+    display: flex;
+}
+
+/* Fix for loading overlay */
+.loading-overlay {
+    display: none;
+}
+
+.loading-overlay[style*="display: flex"] {
+    display: flex !important;
+}

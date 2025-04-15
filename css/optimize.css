@@ -1,0 +1,178 @@
+/* Optimized performance for glitch effects */
+
+/* Only apply certain effects on desktop devices */
+@media (min-width: 992px) {
+    /* Keep the more intensive effects only for desktop */
+    .digital-noise,
+    .data-stream,
+    .distortion-wave,
+    .system-container::after {
+        display: block;
+    }
+    
+    /* Full glitch text effect for desktop */
+    .glitch-text::before,
+    .glitch-text::after {
+        display: block;
+    }
+}
+
+/* Reduce effects on tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Simplify some effects */
+    .digital-noise,
+    .distortion-wave {
+        opacity: 0.02;
+    }
+    
+    .data-stream {
+        opacity: 0.03;
+    }
+    
+    /* Simplified glitch text for tablets */
+    .glitch-text::before,
+    .glitch-text::after {
+        animation-duration: 8s;
+    }
+    
+    /* Reduce animation complexity */
+    @keyframes scanlines {
+        0%, 100% {
+            background-position: 0 0;
+        }
+    }
+}
+
+/* Minimal effects for mobile devices */
+@media (max-width: 767px) {
+    /* Disable the most resource-intensive effects */
+    .digital-noise,
+    .data-stream,
+    .distortion-wave {
+        display: none;
+    }
+    
+    /* Simplified scan line effect */
+    .system-container::after {
+        opacity: 0.02;
+        animation: none;
+    }
+    
+    /* Minimal glitch text for mobile */
+    .glitch-text::before,
+    .glitch-text::after {
+        display: none;
+    }
+    
+    /* Keep only simple effects */
+    .rgb-split {
+        text-shadow: -1px 0 #ff0000, 1px 0 #00ff00;
+        animation: none;
+    }
+    
+    .hologram {
+        animation-duration: 5s;
+    }
+    
+    .flicker {
+        animation-duration: 5s;
+    }
+    
+    /* Reduce animation complexity */
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 0.7;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+}
+
+/* Optimize animations with will-change for hardware acceleration */
+.glitch-text,
+.rgb-split,
+.hologram,
+.flicker,
+.progress-fill,
+.loading-spinner {
+    will-change: transform, opacity;
+}
+
+/* Reduce animation complexity for low-power mode */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .digital-noise,
+    .data-stream,
+    .distortion-wave,
+    .system-container::after {
+        display: none;
+    }
+    
+    .glitch-text::before,
+    .glitch-text::after {
+        display: none;
+    }
+}
+
+/* Optimize image rendering */
+.item-icon,
+.skill-icon,
+.modal-item-image {
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+/* Optimize paint performance */
+.system-container,
+.player-screen,
+.welcome-screen,
+.decline-screen,
+.modal-content {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Optimize layout performance */
+.quests-container,
+.inventory-grid,
+.skills-container {
+    contain: layout style paint;
+}
+
+/* Reduce repaints for fixed elements */
+.system-header,
+.system-footer,
+.notification-container {
+    position: sticky;
+    z-index: 10;
+}
+
+/* Optimize loading performance */
+.loading-overlay {
+    z-index: 9999;
+    background-color: var(--darker-bg);
+    transition: opacity 0.5s ease;
+}
+
+/* Optimize font loading */
+body {
+    font-display: swap;
+}
+
+/* Optimize transitions */
+.transition-300,
+.transition-500,
+.transition-1000 {
+    transition-property: transform, opacity;
+}

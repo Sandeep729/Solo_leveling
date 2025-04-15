@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/glitch-effects.css">
+    <link rel="stylesheet" href="css/optimize.css">
+    <link rel="stylesheet" href="css/limited-effects.css">
+    <link rel="stylesheet" href="css/advanced-animations.css">
+    <link rel="stylesheet" href="css/screen-visibility.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="js/main.js" defer></script>
+    <script src="js/dungeon-system.js" defer></script>
+    <script src="js/skill-system.js" defer></script>
+</head>
+<body>
+    <div class="system-container">
+        <!-- Digital noise and data stream effects -->
+        <div class="digital-noise"></div>
+        <div class="data-stream"></div>
+        <div class="distortion-wave"></div>
+        <div class="hexagon-grid"></div>
+        <!-- Floating particles effect -->
+        <div class="floating-particles" id="particles-container"></div>
+        
+        <div class="system-header">
+            <div class="system-logo">
+                <span class="system-text glitch-text" data-text="SOLO LEVELING">SOLO LEVELING</span>
+                <span class="system-subtext rgb-split">SYSTEM INTERFACE</span>
+            </div>
+            <div class="system-status">
+                <div class="status-indicator flicker"></div>
+                <span class="status-text hologram">SYSTEM ONLINE</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="welcome-screen active" id="welcome-screen">
+                <div class="welcome-title">
+                    <h1 class="glitch-text" data-text="SYSTEM ACTIVATION">SYSTEM ACTIVATION</h1>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="welcome-message">
+                    <p class="typing-animation">Greetings, human.</p>
+                    <p>You have been selected as a potential candidate for the System.</p>
+                    <p>The System grants extraordinary abilities to those who accept its terms.</p>
+                    <p class="hologram">Do you wish to become a Player?</p>
+                </div>
+                <div class="choice-container">
+                    <button class="choice-btn accept-btn glow-border hover-glow" id="become-player">BECOME A PLAYER</button>
+                    <button class="choice-btn decline-btn hover-glow" id="decline-player">DECLINE</button>
+                </div>
+            </div>
+
+            <div class="player-screen" id="player-screen">
+                <button class="back-btn" id="player-back-btn">BACK TO WELCOME</button>
+                <div class="player-header">
+                    <h2 class="rgb-split">PLAYER STATUS</h2>
+                    <div class="header-underline"></div>
+                </div>
+                <div class="player-info pixel-sort">
+                    <div class="player-stats">
+                        <div class="stat">
+                            <span class="stat-label">LEVEL</span>
+                            <span class="stat-value hologram" id="player-level">1</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">HP</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill hp-fill" style="width: 100%"></div>
+                                <span class="progress-text">100/100</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">MP</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill mp-fill" style="width: 100%"></div>
+                                <span class="progress-text">50/50</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">EXP</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill exp-fill" style="width: 0%"></div>
+                                <span class="progress-text">0/100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="player-attributes">
+                        <div class="attribute">
+                            <span class="attribute-label">STRENGTH</span>
+                            <span class="attribute-value">10</span>
+                        </div>
+                        <div class="attribute">
+                            <span class="attribute-label">AGILITY</span>
+                            <span class="attribute-value">10</span>
+                        </div>
+                        <div class="attribute">
+                            <span class="attribute-label">INTELLIGENCE</span>
+                            <span class="attribute-value">10</span>
+                        </div>
+                        <div class="attribute">
+                            <span class="attribute-label">PERCEPTION</span>
+                            <span class="attribute-value">10</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <button class="nav-btn active hologram" data-target="quests-section">DAILY QUESTS</button>
+                    <button class="nav-btn hologram" data-target="inventory-section">INVENTORY</button>
+                    <button class="nav-btn hologram" data-target="skills-section">SKILLS</button>
+                    <button class="nav-btn hologram" data-target="dungeons-section">DUNGEONS</button>
+                </div>
+                <div class="content-sections">
+                    <div class="section active" id="quests-section">
+                        <h3 class="glitch-text" data-text="DAILY QUESTS">DAILY QUESTS</h3>
+                        <div class="section-underline"></div>
+                        <div class="quests-container">
+                            <div class="quest glow-border hover-glow" data-quest-id="1">
+                                <div class="quest-header">
+                                    <span class="quest-title">Defeat 5 Monsters</span>
+                                    <span class="quest-difficulty">E-RANK</span>
+                                </div>
+                                <div class="quest-description">
+                                    <p>Hunt and defeat 5 monsters in the nearby forest.</p>
+                                </div>
+                                <div class="quest-rewards">
+                                    <div class="reward">
+                                        <span class="reward-label">EXP</span>
+                                        <span class="reward-value">50</span>
+                                    </div>
+                                    <div class="reward">
+                                        <span class="reward-label">GOLD</span>
+                                        <span class="reward-value">100</span>
+                                    </div>
+                                </div>
+                                <button class="quest-btn accept-quest pulse-effect">ACCEPT QUEST</button>
+                            </div>
+                            <div class="quest glow-border hover-glow" data-quest-id="2">
+                                <div class="quest-header">
+                                    <span class="quest-title">Collect Healing Herbs</span>
+                                    <span class="quest-difficulty">E-RANK</span>
+                                </div>
+                                <div class="quest-description">
+                                    <p>Gather 10 healing herbs from the enchanted meadow.</p>
+                                </div>
+                                <div class="quest-rewards">
+                                    <div class="reward">
+                                        <span class="reward-label">EXP</span>
+                                        <span class="reward-value">30</span>
+                                    </div>
+                                    <div class="reward">
+                                        <span class="reward-label">GOLD</span>
+                                        <span class="reward-value">50</span>
+                                    </div>
+                                    <div class="reward">
+                                        <span class="reward-label">ITEM</span>
+                                        <span class="reward-value">Healing Potion x1</span>
+                                    </div>
+                                </div>
+                                <button class="quest-btn accept-quest pulse-effect">ACCEPT QUEST</button>
+                            </div>
+                            <div class="quest glow-border hover-glow" data-quest-id="3">
+                                <div class="quest-header">
+                                    <span class="quest-title">Explore the Ancient Ruins</span>
+                                    <span class="quest-difficulty">D-RANK</span>
+                                </div>
+                                <div class="quest-description">
+                                    <p>Venture into the ancient ruins and discover hidden artifacts.</p>
+                                </div>
+                                <div class="quest-rewards">
+                                    <div class="reward">
+                                        <span class="reward-label">EXP</span>
+                                        <span class="reward-value">100</span>
+                                    </div>
+                                    <div class="reward">
+                                        <span class="reward-label">GOLD</span>
+                                        <span class="reward-value">200</span>
+                                    </div>
+                                    <div class="reward">
+                                        <span class="reward-label">ITEM</span>
+                                        <span class="reward-value">Mystery Artifact</span>
+                                    </div>
+                                </div>
+                                <button class="quest-btn accept-quest pulse-effect">ACCEPT QUEST</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section" id="inventory-section">
+                        <h3 class="glitch-text" data-text="INVENTORY">INVENTORY</h3>
+                        <div class="section-underline"></div>
+                        <div class="inventory-container">
+                            <div class="inventory-grid">
+                                <!-- Empty inventory slots -->
+                                <div class="inventory-slot empty" data-slot="1"></div>
+                                <div class="inventory-slot empty" data-slot="2"></div>
+                                <div class="inventory-slot empty" data-slot="3"></div>
+                                <div class="inventory-slot empty" data-slot="4"></div>
+                                <div class="inventory-slot empty" data-slot="5"></div>
+                                <div class="inventory-slot empty" data-slot="6"></div>
+                                <div class="inventory-slot empty" data-slot="7"></div>
+                                <div class="inventory-slot empty" data-slot="8"></div>
+                                <div class="inventory-slot empty" data-slot="9"></div>
+                                <div class="inventory-slot empty" data-slot="10"></div>
+                                <div class="inventory-slot empty" data-slot="11"></div>
+                                <div class="inventory-slot empty" data-slot="12"></div>
+                                <div class="inventory-slot empty" data-slot="13"></div>
+                                <div class="inventory-slot empty" data-slot="14"></div>
+                                <div class="inventory-slot empty" data-slot="15"></div>
+                                <div class="inventory-slot empty" data-slot="16"></div>
+                            </div>
+                            <div class="item-details">
+                                <h4 class="hologram">ITEM DETAILS</h4>
+                                <div class="details-content">
+                                    <p class="no-item-message">Select an item to view details</p>
+                                    <div class="item-info hidden">
+                                        <div class="item-name rgb-split"></div>
+                                        <div class="item-type"></div>
+                                        <div class="item-description"></div>
+                                        <div class="item-effects"></div>
+                                        <button class="item-use-btn glow-border hover-glow">USE</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section" id="skills-section">
+                        <h3 class="glitch-text" data-text="SKILLS">SKILLS</h3>
+                        <div class="section-underline"></div>
+                        <div class="skills-container">
+                            <div class="skill locked" data-skill-id="1">
+                                <div class="skill-icon">
+                                    <div class="lock-icon"></div>
+                                </div>
+                                <div class="skill-info">
+                                    <div class="skill-name">Basic Strike</div>
+                                    <div class="skill-level">Level 0</div>
+                                    <div class="skill-description">A basic attack that deals physical damage.</div>
+                                    <div class="skill-unlock">
+                                        <span>Unlocks at Level 2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill locked" data-skill-id="2">
+                                <div class="skill-icon">
+                                    <div class="lock-icon"></div>
+                                </div>
+                                <div class="skill-info">
+                                    <div class="skill-name">Mana Shield</div>
+                                    <div class="skill-level">Level 0</div>
+                                    <div class="skill-description">Creates a protective barrier using mana.</div>
+                                    <div class="skill-unlock">
+                                        <span>Unlocks at Level 3</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill locked" data-skill-id="3">
+                                <div class="skill-icon">
+                                    <div class="lock-icon"></div>
+                                </div>
+                                <div class="skill-info">
+                                    <div class="skill-name">Shadow Extraction</div>
+                                    <div class="skill-level">Level 0</div>
+                                    <div class="skill-description">Extract shadows from defeated enemies.</div>
+                                    <div class="skill-unlock">
+                                        <span>Unlocks at Level 5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section" id="dungeons-section">
+                        <h3 class="glitch-text" data-text="DUNGEONS">DUNGEONS</h3>
+                        <div class="section-underline"></div>
+                        <div class="dungeons-container">
+                            <div class="dungeon glow-border hover-glow" data-dungeon-id="1">
+                                <div class="dungeon-header">
+                                    <span class="dungeon-title">Forest of Shadows</span>
+                                    <span class="dungeon-difficulty">E-RANK</span>
+                                </div>
+                                <div class="dungeon-description">
+                                    <p>A dark forest filled with low-level monsters. Perfect for beginners.</p>
+                                </div>
+                                <div class="dungeon-rewards">
+                                    <div class="reward">
+                                        <span class="reward-label">EXP</span>
+                                        <span class="reward-value">100</span>
+                                    </div>
+                                    <div class="reward">
+                                        <span class="reward-label">GOLD</span>
+                                        <span class="reward-value">200</span>
+                                    </div>
+                                </div>
+                                <button class="dungeon-btn enter-dungeon pulse-effect" data-dungeon-id="1">ENTER DUNGEON</button>
+                            </div>
+                            <div class="dungeon glow-border hover-glow" data-dungeon-id="2">
+                                <div class="dungeon-header">
+                                    <span class="dungeon-title">Abandoned Mine</span>
+                                    <span class="dungeon-difficulty">D-RANK</span>
+                                </div>
+                                <div class="dungeon-description">
+                                    <p>An old mine infested with monsters and containing valuable minerals.</p>
+                                </div>
+                                <div class="dungeon-rewards">
+                                    <div class="reward">
+                                        <span class="reward-label">EXP</span>
+                                        <span class="reward-value">200</span>
+                                    </div>
+                                    <div class="reward">
+                                        <span class="reward-label">GOLD</span>
+                                        <span class="reward-value">350</span>
+                                    </div>
+                                </div>
+                                <button class="dungeon-btn enter-dungeon pulse-effect" data-dungeon-id="2">ENTER DUNGEON</button>
+                            </div>
+                            <div class="dungeon glow-border hover-glow" data-dungeon-id="3">
+                                <div class="dungeon-header">
+                                    <span class="dungeon-title">Ancient Temple</span>
+                                    <span class="dungeon-difficulty">C-RANK</span>
+                                </div>
+                                <div class="dungeon-description">
+                                    <p>A mysterious temple with powerful guardians and ancient treasures.</p>
+                                </div>
+                                <div class="dungeon-rewards">
+                                    <div class="reward">
+                                        <span class="reward-label">EXP</span>
+                                        <span class="reward-value">350</span>
+                                    </div>
+                                    <div class="reward">
+                                        <span class="reward-label">GOLD</span>
+                                        <span class="reward-value">500</span>
+                                    </div>
+                                </div>
+                                <button class="dungeon-btn enter-dungeon pulse-effect" data-dungeon-id="3">ENTER DUNGEON</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="decline-screen" id="decline-screen">
+                <div class="decline-message">
+                    <h2 class="glitch-text system-alert" data-text="SYSTEM NOTIFICATION">SYSTEM NOTIFICATION</h2>
+                    <p>You have declined to become a Player.</p>
+                    <p>The System will now enter hibernation mode.</p>
+                    <p class="shadow-animation">Should you change your mind, the opportunity may not present itself again.</p>
+                    <p>Are you certain of your decision?</p>
+                    <div class="choice-container">
+                        <button class="reconsider-btn glow-border hover-glow" id="reconsider-btn">RECONSIDER</button>
+                        <button class="final-decline-btn hover-glow" id="final-decline-btn">CONFIRM DECLINE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="final-decline-screen" id="final-decline-screen">
+                <button class="back-btn" id="final-decline-back-btn">RETURN</button>
+                <div class="final-decline-message">
+                    <h2 class="glitch-text system-alert" data-text="FINAL WARNING">FINAL WARNING</h2>
+                    <p>You have chosen to reject the System's offer.</p>
+                    <p>In a world where others will gain power, you will remain ordinary.</p>
+                    <p>Monsters are appearing across the world. Without the System's protection, your survival is uncertain.</p>
+                    <p class="hologram">This is your last chance to become a Player.</p>
+                    <div class="choice-container">
+                        <button class="last-chance-btn glow-border pulse-effect" id="last-chance-btn">BECOME A PLAYER</button>
+                        <button class="permanent-decline-btn" id="permanent-decline-btn">PERMANENTLY DECLINE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dungeon-screen" id="dungeon-screen">
+                <button class="back-btn" id="dungeon-back-btn">BACK TO DUNGEONS</button>
+                <div class="dungeon-header">
+                    <h2 class="rgb-split" id="dungeon-name">DUNGEON NAME</h2>
+                    <div class="header-underline"></div>
+                </div>
+                <div class="dungeon-content">
+                    <div class="dungeon-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill dungeon-progress-fill" style="width: 0%"></div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                    <div class="dungeon-status">
+                        <p>Explore the dungeon and defeat monsters to clear it.</p>
+                        <p id="dungeon-status-text">Ready to begin exploration.</p>
+                    </div>
+                    <div class="dungeon-actions">
+                        <button class="dungeon-action-btn glow-border hover-glow" id="explore-btn">EXPLORE</button>
+                        <button class="dungeon-action-btn glow-border hover-glow" id="fight-btn" disabled>FIGHT MONSTER</button>
+                        <button class="dungeon-action-btn glow-border hover-glow" id="rest-btn" disabled>REST</button>
+                        <button class="dungeon-action-btn glow-border hover-glow" id="clear-dungeon-btn" disabled>CLEAR DUNGEON</button>
+                    </div>
+                    <div class="dungeon-log">
+                        <h3>ADVENTURE LOG</h3>
+                        <div class="log-container" id="dungeon-log-container">
+                            <p class="log-entry">System: Dungeon exploration ready to begin.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="system-footer">
+            <div class="system-info">
+                <span class="info-label">SYSTEM VERSION</span>
+                <span class="info-value flicker">1.0.0</span>
+            </div>
+            <div class="system-info">
+                <span class="info-label">LOCATION</span>
+                <span class="info-value">UNKNOWN</span>
+            </div>
+            <div class="system-info">
+                <span class="info-label">TIME</span>
+                <span class="info-value" id="system-time">00:00:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for item details -->
+    <div class="modal" id="item-modal">
+        <div class="modal-content pixel-sort">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h3 id="modal-item-name" class="rgb-split">Item Name</h3>
+            </div>
+            <div class="modal-body">
+                <div class="modal-item-image">
+                    <div class="item-placeholder"></div>
+                </div>
+                <div class="modal-item-details">
+                    <div class="modal-item-type">Type: <span id="modal-item-type">Consumable</span></div>
+                    <div class="modal-item-description" id="modal-item-description">
+                        Item description goes here.
+                    </div>
+                    <div class="modal-item-effects" id="modal-item-effects">
+                        <div class="effect">+10 HP Recovery</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn use-btn glow-border hover-glow" id="modal-use-btn">USE</button>
+                <button class="modal-btn close-btn hover-glow">CLOSE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup for level up -->
+    <div class="popup-notification" id="level-up-popup" style="display: none;">
+        <h3 class="rgb-split">LEVEL UP!</h3>
+        <p>You have reached level <span id="new-level">2</span>!</p>
+        <p>Your stats have increased:</p>
+        <div class="stat-increases">
+            <div class="stat-increase">HP +20</div>
+            <div class="stat-increase">MP +10</div>
+            <div class="stat-increase">Strength +2</div>
+            <div class="stat-increase">Agility +2</div>
+            <div class="stat-increase">Intelligence +2</div>
+            <div class="stat-increase">Perception +2</div>
+        </div>
+        <button class="popup-btn hover-glow" id="level-up-confirm">CONFIRM</button>
+    </div>
+
+    <!-- Popup for skill acquisition -->
+    <div class="popup-notification" id="skill-popup" style="display: none;">
+        <h3 class="rgb-split">NEW SKILL AVAILABLE</h3>
+        <p>You can now learn the skill:</p>
+        <p class="skill-name hologram" id="new-skill-name">Shadow Extraction</p>
+        <p class="skill-description" id="new-skill-description">Extract shadows from defeated enemies to create loyal servants.</p>
+        <div class="choice-container">
+            <button class="popup-btn accept-btn glow-border hover-glow" id="acquire-skill-btn">ACQUIRE SKILL</button>
+            <button class="popup-btn decline-btn hover-glow" id="decline-skill-btn">DECLINE</button>
+        </div>
+    </div>
+
+    <!-- Notification system -->
+    <div class="notification-container" id="notification-container"></div>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text glitch-text" data-text="SYSTEM INITIALIZING...">SYSTEM INITIALIZING...</div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="button-click" preload="auto">
+        <source src="audio/button_click.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="level-up-sound" preload="auto">
+        <source src="audio/level_up.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="quest-complete" preload="auto">
+        <source src="audio/quest_complete.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="skill-unlock" preload="auto">
+        <source src="audio/skill_unlock.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="dungeon-clear" preload="auto">
+        <source src="audio/dungeon_clear.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="background-music" loop preload="auto">
+        <source src="audio/background_music.mp3" type="audio/mpeg">
+    </audio>
+</body>
+</html>
